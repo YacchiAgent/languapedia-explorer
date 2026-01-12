@@ -267,11 +267,10 @@ const App = {
                     <section class="diagram-card">
                         <h2><i data-lucide="layout"></i> Architecture/Flow</h2>
                         <div class="diagram-placeholder">
-                            <div class="flow-step">Source Code</div>
-                            <div class="flow-arrow"><i data-lucide="arrow-right"></i></div>
-                            <div class="flow-step highlighted">${lang.id === 'cpp' || lang.id === 'rust' ? 'Compiler' : 'Interpreter'}</div>
-                            <div class="flow-arrow"><i data-lucide="arrow-right"></i></div>
-                            <div class="flow-step">Executable/Runtime</div>
+                            ${(lang.executionSteps || ['Source Code', 'Compiler', 'Binary']).map((step, index, arr) => `
+                                <div class="flow-step ${index === 1 ? 'highlighted' : ''}">${step}</div>
+                                ${index < arr.length - 1 ? `<div class="flow-arrow"><i data-lucide="arrow-right"></i></div>` : ''}
+                            `).join('')}
                         </div>
                     </section>
 
