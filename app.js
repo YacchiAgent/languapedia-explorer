@@ -50,7 +50,21 @@ const App = {
     },
 
     navigate(path) {
-        window.history.pushState({}, '', path);
+        let normalizedPath = path;
+        // If path is root or relative root, use basePath
+        if (path === '/' || path === './') {
+            normalizedPath = this.state.basePath + '/';
+        }
+        // If path starts with ./, replace it with basePath
+        else if (path.startsWith('./')) {
+            normalizedPath = this.state.basePath + '/' + path.slice(2);
+        }
+        // If it's an absolute path but doesn't start with basePath, prepend it
+        else if (path.startsWith('/') && !path.startsWith(this.state.basePath)) {
+            normalizedPath = this.state.basePath + path;
+        }
+
+        window.history.pushState({}, '', normalizedPath);
         this.handleRoute();
     },
 
