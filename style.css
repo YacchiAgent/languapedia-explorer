@@ -323,9 +323,6 @@ main {
 }
 
 .card-badge {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
     background: rgba(59, 130, 246, 0.1);
     color: var(--accent-blue);
     padding: 4px 12px;
@@ -333,6 +330,7 @@ main {
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .lang-card:hover {
@@ -360,8 +358,16 @@ main {
 .card-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.card-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
 }
 
 .card-icon {
@@ -564,6 +570,39 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+}
+
+.episode-card {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.episode-card::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    font-size: 8rem;
+    color: rgba(255, 255, 255, 0.05);
+    font-family: serif;
+}
+
+.episode-text {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.8;
+}
+
+@media (max-width: 992px) {
+    .episode-card {
+        grid-column: span 1;
+    }
 }
 
 .info-card,
