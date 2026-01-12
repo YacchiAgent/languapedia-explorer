@@ -5,7 +5,9 @@
 const App = {
     state: {
         searchQuery: '',
-        activeCategory: 'All'
+        activeCategory: 'All',
+        // Get the repository name from path if we're on GH Pages
+        basePath: window.location.pathname.endsWith('/') ? window.location.pathname.slice(0, -1) : window.location.pathname
     },
 
     init() {
@@ -22,9 +24,12 @@ const App = {
         // Intercept clicks on internal links
         document.addEventListener('click', (e) => {
             const link = e.target.closest('a');
-            if (link && link.getAttribute('href') && link.getAttribute('href').startsWith('/')) {
-                e.preventDefault();
-                this.navigate(link.getAttribute('href'));
+            if (link && link.getAttribute('href')) {
+                const href = link.getAttribute('href');
+                if (href.startsWith('/') || href.startsWith('./')) {
+                    e.preventDefault();
+                    this.navigate(href);
+                }
             }
         });
 
@@ -105,7 +110,7 @@ const App = {
         }
 
         grid.innerHTML = filteredLanguages.map(lang => `
-            <a href="/?lang=${lang.id}" class="lang-card" data-id="${lang.id}">
+            <a href="./?lang=${lang.id}" class="lang-card" data-id="${lang.id}">
                 <div class="card-header">
                     <div class="card-icon" style="color: ${lang.color}">
                         <i data-lucide="code"></i>
@@ -126,7 +131,7 @@ const App = {
     renderFeatured() {
         const featured = languages.find(l => l.id === 'rust') || languages[0]; // Currently highlight Rust
         return `
-            <section class="featured-banner" onclick="App.navigate('/?lang=${featured.id}')">
+            <section class="featured-banner" onclick="App.navigate('./?lang=${featured.id}')">
                 <div class="featured-badge">Featured Language</div>
                 <div class="featured-content">
                     <div class="featured-text">
@@ -173,13 +178,13 @@ const App = {
     renderDetail(id) {
         const lang = languages.find(l => l.id === id);
         if (!lang) {
-            this.mainElement.innerHTML = `<h1>Language not found</h1><a href="/">Back to home</a>`;
+            this.mainElement.innerHTML = `<h1>Language not found</h1><a href="./">Back to home</a>`;
             return;
         }
 
         this.mainElement.innerHTML = `
             <div class="detail-view">
-                <button onclick="App.navigate('/')" class="back-button">
+                <button onclick="App.navigate('./')" class="back-button">
                     <i data-lucide="arrow-left"></i> Back to Listing
                 </button>
                 
