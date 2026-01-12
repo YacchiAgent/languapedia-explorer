@@ -3,6 +3,11 @@
  */
 
 const App = {
+    state: {
+        searchQuery: '',
+        activeCategory: 'All'
+    },
+
     init() {
         this.mainElement = document.getElementById('main-content');
         this.navLinks = document.querySelectorAll('.nav-link');
@@ -17,9 +22,24 @@ const App = {
         // Intercept clicks on internal links
         document.addEventListener('click', (e) => {
             const link = e.target.closest('a');
-            if (link && link.getAttribute('href').startsWith('/')) {
+            if (link && link.getAttribute('href') && link.getAttribute('href').startsWith('/')) {
                 e.preventDefault();
                 this.navigate(link.getAttribute('href'));
+            }
+        });
+
+        // Delegate search and filter events
+        document.addEventListener('input', (e) => {
+            if (e.target.id === 'search-input') {
+                this.state.searchQuery = e.target.value.toLowerCase();
+                this.applyFilters();
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-btn')) {
+                this.state.activeCategory = e.target.dataset.category;
+                this.applyFilters();
             }
         });
     },
@@ -53,35 +73,81 @@ const App = {
         });
     },
 
+    applyFilters() {
+        const filtered = languages.filter(lang => {
+            const matchesSearch = lang.name.toLowerCase().includes(this.state.searchQuery) ||
+                lang.description.toLowerCase().includes(this.state.searchQuery);
+            const matchesCategory = this.state.activeCategory === 'All' || lang.category === this.state.activeCategory;
+            return matchesSearch && matchesCategory;
+        });
+
+        this.updateGrid(filtered);
+        this.updateFilterButtons();
+    },
+
+    updateFilterButtons() {
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            if (btn.dataset.category === this.state.activeCategory) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    },
+
+    updateGrid(filteredLanguages) {
+        const grid = document.querySelector('.languages-grid');
+        if (!grid) return;
+
+        if (filteredLanguages.length === 0) {
+            grid.innerHTML = `<div class="no-results">No languages found matching your criteria.</div>`;
+            return;
+        }
+
+        grid.innerHTML = filteredLanguages.map(lang => `
+            <a href="/?lang=${lang.id}" class="lang-card" data-id="${lang.id}">
+                <div class="card-header">
+                    <div class="card-icon" style="color: ${lang.color}">
+                        <i data-lucide="code"></i>
+                    </div>
+                    <span class="card-year">${lang.year}</span>
+                </div>
+                <h3>${lang.name}</h3>
+                <p>${lang.description}</p>
+                <div class="card-badge">${lang.category}</div>
+                <div class="card-footer">
+                    ${lang.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+            </a>
+        `).join('');
+        lucide.createIcons();
+    },
+
     renderListing() {
+        const categories = ['All', ...new Set(languages.map(l => l.category))];
+
         let html = `
             <section class="hero">
                 <h1>LanguaPedia</h1>
-                <p>Discover the fascinating world of programming languages, their origins, and their impact on technology.</p>
+                <p>Explore the evolution and secrets of the world's most influential programming languages.</p>
+
+                <div class="controls">
+                    <div class="search-bar">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="search-input" placeholder="Search languages..." value="${this.state.searchQuery}">
+                    </div>
+                    <div class="filters">
+                        ${categories.map(cat => `
+                            <button class="filter-btn ${this.state.activeCategory === cat ? 'active' : ''}" data-category="${cat}">${cat}</button>
+                        `).join('')}
+                    </div>
+                </div>
             </section>
             <div class="languages-grid">
         `;
 
-        languages.forEach(lang => {
-            html += `
-                <a href="/?lang=${lang.id}" class="lang-card" data-id="${lang.id}">
-                    <div class="card-header">
-                        <div class="card-icon" style="color: ${lang.color}">
-                            <i data-lucide="code"></i>
-                        </div>
-                        <span class="card-year">${lang.year}</span>
-                    </div>
-                    <h3>${lang.name}</h3>
-                    <p>${lang.description}</p>
-                    <div class="card-footer">
-                        ${lang.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                    </div>
-                </a>
-            `;
-        });
-
-        html += `</div>`;
         this.mainElement.innerHTML = html;
+        this.applyFilters();
         lucide.createIcons();
     },
 
