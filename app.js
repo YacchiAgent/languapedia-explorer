@@ -6,21 +6,21 @@ const App = {
     state: {
         searchQuery: '',
         activeCategory: 'All',
-        // Detect the repository name from the path (e.g., /languapedia-explorer/)
-        basePath: window.location.pathname.split('/')[1] ? '/' + window.location.pathname.split('/')[1] : ''
+        // Robust base path detection
+        basePath: (function () {
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') return '';
+            const pathSegments = window.location.pathname.split('/');
+            // Usually the first segment is the repo name on GH Pages
+            return pathSegments[1] && !pathSegments[1].includes('.') ? '/' + pathSegments[1] : '';
+        })()
     },
 
     init() {
         this.mainElement = document.getElementById('main-content');
         this.navLinks = document.querySelectorAll('.nav-link');
-
-        // Ensure basePath is correctly localized for local vs GH Pages
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            this.state.basePath = '';
-        }
-
         this.setupEventListeners();
         this.handleRoute();
+        console.log('App initialized with basePath:', this.state.basePath);
     },
 
     setupEventListeners() {
@@ -30,10 +30,10 @@ const App = {
         // Intercept clicks on internal links
         document.addEventListener('click', (e) => {
             const link = e.target.closest('a');
-            if (link && link.getAttribute('href')) {
+            if (link && !link.target && !e.ctrlKey && !e.metaKey) {
                 const href = link.getAttribute('href');
                 // Only intercept internal relative links
-                if (href.startsWith('./') || (href.startsWith('/') && !href.startsWith('http'))) {
+                if (href && (href.startsWith('./') || (href.startsWith('/') && !href.startsWith('//')))) {
                     e.preventDefault();
                     this.navigate(href);
                 }
@@ -58,25 +58,30 @@ const App = {
 
     navigate(path) {
         let normalizedPath = path;
+        const currentBase = this.state.basePath;
+
         // If path is root or relative root, use basePath
         if (path === '/' || path === './') {
-            normalizedPath = this.state.basePath + '/';
+            normalizedPath = currentBase + '/';
         }
         // If path starts with ./, replace it with basePath
         else if (path.startsWith('./')) {
-            normalizedPath = this.state.basePath + '/' + path.slice(2);
+            normalizedPath = currentBase + '/' + path.slice(2);
         }
         // If it's an absolute path but doesn't start with basePath, prepend it
-        else if (path.startsWith('/') && !path.startsWith(this.state.basePath)) {
-            normalizedPath = this.state.basePath + path;
+        else if (path.startsWith('/') && !path.startsWith(currentBase + '/')) {
+            normalizedPath = currentBase + path;
         }
 
+        // Clean up double slashes
+        normalizedPath = normalizedPath.replace(/\/+/g, '/');
+
+        console.log(`Navigating from ${window.location.pathname} to ${normalizedPath}`);
         window.history.pushState({}, '', normalizedPath);
         this.handleRoute();
     },
 
     handleRoute() {
-        const path = window.location.pathname;
         const params = new URLSearchParams(window.location.search);
         const langId = params.get('lang');
 
@@ -86,12 +91,18 @@ const App = {
             this.renderListing();
         }
 
-        this.updateNavState(path);
+        this.updateNavState();
     },
 
-    updateNavState(path) {
+    updateNavState() {
+        const currentPath = window.location.pathname;
+        const search = window.location.search;
+
         this.navLinks.forEach(link => {
-            if (link.getAttribute('href') === path) {
+            const href = link.getAttribute('href');
+            const targetPath = this.state.basePath + (href.startsWith('./') ? href.slice(1) : href);
+
+            if (currentPath === targetPath || (currentPath + search).includes(href)) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
