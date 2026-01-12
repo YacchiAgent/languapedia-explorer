@@ -230,9 +230,9 @@ const App = {
                             <p>"${lang.mascotQuote}"</p>
                             <div class="bubble-tail"></div>
                         </div>
-                        <div class="mascot-avatar" style="background-image: url('${lang.mascot}')">
-                            <!-- Placeholder for generated mascot -->
-                            <div class="mascot-placeholder">Mascot</div>
+                        <div class="mascot-avatar-container">
+                            <img src="${lang.mascot}" alt="${lang.name} Mascot" class="mascot-img" 
+                                 onerror="this.src='https://img.icons8.com/color/144/robot-2.png'; this.onerror=null;">
                         </div>
                     </div>
                 </header>
