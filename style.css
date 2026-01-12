@@ -578,6 +578,12 @@ main {
     gap: 2rem;
 }
 
+@media (max-width: 900px) {
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .episode-card {
     grid-column: span 2;
     background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
