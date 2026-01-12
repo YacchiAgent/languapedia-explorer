@@ -85,6 +85,9 @@ const App = {
         const params = new URLSearchParams(window.location.search);
         const langId = params.get('lang');
 
+        // Always scroll to top on navigation Change
+        window.scrollTo(0, 0);
+
         if (langId) {
             this.renderDetail(langId);
         } else {
@@ -147,11 +150,13 @@ const App = {
                     <div class="card-icon" style="color: ${lang.color}">
                         <i data-lucide="code"></i>
                     </div>
-                    <span class="card-year">${lang.year}</span>
+                    <div class="card-meta">
+                        <span class="card-year">${lang.year}</span>
+                        <div class="card-badge">${lang.category}</div>
+                    </div>
                 </div>
                 <h3>${lang.name}</h3>
                 <p>${lang.description}</p>
-                <div class="card-badge">${lang.category}</div>
                 <div class="card-footer">
                     ${lang.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                 </div>
@@ -238,6 +243,13 @@ const App = {
                 </header>
 
                 <div class="detail-grid">
+                    ${lang.funEpisode ? `
+                    <section class="episode-card">
+                        <h2><i data-lucide="sparkles"></i> Did You Know?</h2>
+                        <p class="episode-text">${lang.funEpisode}</p>
+                    </section>
+                    ` : ''}
+
                     <section class="info-card">
                         <h2><i data-lucide="info"></i> Overview</h2>
                         <p>${lang.description}</p>
