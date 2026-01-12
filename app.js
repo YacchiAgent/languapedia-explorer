@@ -123,6 +123,22 @@ const App = {
         lucide.createIcons();
     },
 
+    renderFeatured() {
+        const featured = languages.find(l => l.id === 'rust') || languages[0]; // Currently highlight Rust
+        return `
+            <section class="featured-banner" onclick="App.navigate('/?lang=${featured.id}')">
+                <div class="featured-badge">Featured Language</div>
+                <div class="featured-content">
+                    <div class="featured-text">
+                        <h2>${featured.name}</h2>
+                        <p>${featured.description}</p>
+                    </div>
+                    <div class="featured-image" style="background-image: url('${featured.mascot}')"></div>
+                </div>
+            </section>
+        `;
+    },
+
     renderListing() {
         const categories = ['All', ...new Set(languages.map(l => l.category))];
 
@@ -143,6 +159,9 @@ const App = {
                     </div>
                 </div>
             </section>
+            
+            ${this.state.searchQuery === '' && this.state.activeCategory === 'All' ? this.renderFeatured() : ''}
+
             <div class="languages-grid">
         `;
 
