@@ -123,13 +123,94 @@ main {
     color: var(--text-secondary);
     font-size: 1.25rem;
     max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+/* Controls (Search & Filter) */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    max-width: 800px;
     margin: 0 auto;
+}
+
+.search-bar {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar i {
+    position: absolute;
+    left: 1.25rem;
+    color: var(--text-secondary);
+    width: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem 1rem 1rem 3.5rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.filters {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1.25rem;
+    border-radius: 20px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.filter-btn.active {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: white;
 }
 
 .languages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 2rem;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem;
+    color: var(--text-secondary);
+    font-size: 1.25rem;
 }
 
 /* Card Styles */
@@ -144,7 +225,21 @@ main {
     overflow: hidden;
     text-decoration: none;
     color: inherit;
-    display: block;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-badge {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-blue);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .lang-card:hover {
