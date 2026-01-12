@@ -6,13 +6,19 @@ const App = {
     state: {
         searchQuery: '',
         activeCategory: 'All',
-        // Get the repository name from path if we're on GH Pages
-        basePath: window.location.pathname.endsWith('/') ? window.location.pathname.slice(0, -1) : window.location.pathname
+        // Detect the repository name from the path (e.g., /languapedia-explorer/)
+        basePath: window.location.pathname.split('/')[1] ? '/' + window.location.pathname.split('/')[1] : ''
     },
 
     init() {
         this.mainElement = document.getElementById('main-content');
         this.navLinks = document.querySelectorAll('.nav-link');
+
+        // Ensure basePath is correctly localized for local vs GH Pages
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            this.state.basePath = '';
+        }
+
         this.setupEventListeners();
         this.handleRoute();
     },
@@ -26,7 +32,8 @@ const App = {
             const link = e.target.closest('a');
             if (link && link.getAttribute('href')) {
                 const href = link.getAttribute('href');
-                if (href.startsWith('/') || href.startsWith('./')) {
+                // Only intercept internal relative links
+                if (href.startsWith('./') || (href.startsWith('/') && !href.startsWith('http'))) {
                     e.preventDefault();
                     this.navigate(href);
                 }
