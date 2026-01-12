@@ -74,12 +74,9 @@ greet('World');`,
         useCase: 'Games, Systems, High Performance',
         description: 'A powerful, efficient language that extends C with object-oriented features.',
         tags: ['Fast', 'Low-level', 'Standard'],
+        category: 'Systems',
         color: '#00599c',
-        example: `#include <iostream>
-int main() {
-    std::cout << "Hello, C++!" << std::endl;
-    return 0;
-}`,
+        example: `#include <iostream>\nint main() {\n    std::cout << "Hello, C++!" << std::endl;\n    return 0;\n}`,
         history: [
             { year: 1979, event: 'C with Classes development started' },
             { year: 1983, event: 'Renamed to C++' },
@@ -88,5 +85,70 @@ int main() {
         ],
         mascot: 'assets/cpp_mascot.png',
         mascotQuote: 'With great power comes great responsibility... and manual memory management.'
+    },
+    {
+        id: 'go',
+        name: 'Go',
+        year: 2009,
+        creator: 'Robert Griesemer, Rob Pike, Ken Thompson (Google)',
+        useCase: 'Cloud, Infrastructure, Microservices',
+        description: 'An open-source language that simplifies building simple, reliable, and efficient software.',
+        tags: ['Cloud', 'Concurrent', 'Simple'],
+        category: 'Backend',
+        color: '#00add8',
+        example: `package main\nimport "fmt"\n\nfunc main() {\n    fmt.Println("Hello, Gophers!")\n}`,
+        history: [
+            { year: 2007, event: 'Design started at Google' },
+            { year: 2009, event: 'Open sourced as Go 1.0' },
+            { year: 2012, event: 'Go 1.0 released' },
+            { year: 2022, event: 'Generics introduced in Go 1.18' }
+        ],
+        mascot: 'assets/go_mascot.png',
+        mascotQuote: 'Keep it simple, keep it fast, keep it concurrent!'
+    },
+    {
+        id: 'java',
+        name: 'Java',
+        year: 1995,
+        creator: 'James Gosling (Sun Microsystems)',
+        useCase: 'Enterprise, Android, Finance',
+        description: 'A class-based, object-oriented language designed to have as few implementation dependencies as possible.',
+        tags: ['Enterprise', 'Reliable', 'Cross-platform'],
+        category: 'Enterprise',
+        color: '#007396',
+        example: `public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Java World!");\n    }\n}`,
+        history: [
+            { year: 1991, event: 'Project Green started' },
+            { year: 1995, event: 'Java 1.0 released (Write Once, Run Anywhere)' },
+            { year: 2004, event: 'J2SE 5.0 (Generics, Enums)' },
+            { year: 2014, event: 'Java 8 (Lambdas, Streams)' }
+        ],
+        mascot: 'assets/java_mascot.png',
+        mascotQuote: 'Object-oriented from head to toe!'
+    },
+    {
+        id: 'swift',
+        name: 'Swift',
+        year: 2014,
+        creator: 'Chris Lattner (Apple)',
+        useCase: 'iOS, macOS, WatchOS',
+        description: 'A powerful and intuitive programming language for iOS, iPadOS, macOS, tvOS, and watchOS.',
+        tags: ['Mobile', 'Safe', 'Modern'],
+        category: 'Mobile',
+        color: '#f05138',
+        example: `let name = "Developer"\nprint("Hello, \\(name)! Let's build for Apple platforms.")`,
+        history: [
+            { year: 2010, event: 'Development started' },
+            { year: 2014, event: 'Swift 1.0 announced at WWDC' },
+            { year: 2015, event: 'Swift 2.0 open sourced' },
+            { year: 2024, event: 'Swift 6.0 major update' }
+        ],
+        mascot: 'assets/swift_placeholder.png', // Using placeholder for now
+        mascotQuote: 'Fast, safe, and ready for your next big app.'
     }
 ];
+
+// Add category to existing ones
+languages[0].category = 'AI'; // Python
+languages[1].category = 'Web'; // JS
+languages[2].category = 'Systems'; // Rust
