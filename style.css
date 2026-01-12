@@ -161,6 +161,20 @@ main {
     margin: 0 auto;
 }
 
+.detail-view {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding: 0 1.5rem;
+    width: 100%;
+}
+
+@media (max-width: 640px) {
+    .detail-view {
+        padding: 0 1rem;
+        margin-top: 60px;
+    }
+}
+
 .search-bar {
     width: 100%;
     position: relative;
@@ -475,8 +489,21 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     gap: 2rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+    .detail-header {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .mascot-section {
+        align-self: center;
+    }
 }
 
 .header-main h1 {
@@ -580,7 +607,18 @@ main {
 
 @media (max-width: 900px) {
     .detail-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .episode-card,
+    .history-card,
+    .diagram-card {
+        grid-column: auto;
+        width: 100%;
+        max-width: 100%;
+        /* Ensure no overflow */
     }
 }
 

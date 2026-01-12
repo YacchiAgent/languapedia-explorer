@@ -553,5 +553,586 @@ console.log(msg);`,
         mascot: 'assets/placeholder_mascot.png',
         mascotQuote: 'JavaScript that scales.',
         funEpisode: "Created by the same guy who made C#."
+    },
+    {
+        id: 'r_lang',
+        name: 'R',
+        year: 1993,
+        creator: 'Ihaka & Gentleman',
+        useCase: 'Statistics, Data',
+        description: 'The power of statistics in a script.',
+        tags: ['Stats', 'Data', 'Visual'],
+        category: 'Data',
+        color: '#276bca',
+        example: `# Hello World in R
+# The essence: Vectorized
+cat("Hello, World!")`,
+        executionSteps: ['Script', 'Parser', 'Interpreter', 'Output'],
+        history: [{ year: 1993, event: 'Born at U of Auckland' }, { year: 2000, event: 'R 1.0 Release' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Data is beautiful.',
+        funEpisode: "Named after its creators Ross and Robert."
+    },
+    {
+        id: 'lua',
+        name: 'Lua',
+        year: 1993,
+        creator: 'Ierusalimschy',
+        useCase: 'Game Scripts',
+        description: 'Lightweight and embeddable scripting engine.',
+        tags: ['Games', 'Fast', 'Small'],
+        category: 'Scripting',
+        color: '#000080',
+        example: `-- Hello World in Lua
+-- The essence: Simple Tables
+print("Hello, World!")`,
+        executionSteps: ['Script', 'Bytecode', 'Lua VM', 'Result'],
+        history: [{ year: 1993, event: 'Created in Brazil' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Small yet mighty.',
+        funEpisode: "Lua means 'Moon' in Portuguese."
+    },
+    {
+        id: 'dart',
+        name: 'Dart',
+        year: 2011,
+        creator: 'Google',
+        useCase: 'Mobile (Flutter)',
+        description: 'Optimized for high-quality UI development.',
+        tags: ['Flutter', 'Google', 'UI'],
+        category: 'Mobile',
+        color: '#0175c2',
+        example: `// Hello World in Dart
+// The essence: UI Focused
+void main() {
+  print("Hello, World!");
+}`,
+        executionSteps: ['Source', 'Compiler (AOT)', 'Machine Code', 'Run'],
+        history: [{ year: 2011, event: 'GOTO Conference' }, { year: 2018, event: 'Flutter 1.0' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'UI first.',
+        funEpisode: "AOT compilation makes Flutter apps very fast!"
+    },
+    {
+        id: 'haskell',
+        name: 'Haskell',
+        year: 1990,
+        creator: 'Committee',
+        useCase: 'Academia',
+        description: 'Purely functional, lazy, and mathematically sound.',
+        tags: ['Pure', 'Lazy', 'Math'],
+        category: 'Functional',
+        color: '#5e5086',
+        example: `-- Hello World in Haskell
+-- The essence: IO Monad
+main = putStrLn "Hello, World!"`,
+        executionSteps: ['Source', 'GHC', 'Executable', 'Run'],
+        history: [{ year: 1990, event: 'Haskell 1.0' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Pure functions only.',
+        funEpisode: "Named after logician Haskell Curry."
+    },
+    {
+        id: 'prolog',
+        name: 'Prolog',
+        year: 1972,
+        creator: 'Colmerauer',
+        useCase: 'Logic, AI',
+        description: 'The definitive logic programming language.',
+        tags: ['Logic', 'AI', 'Search'],
+        category: 'Functional',
+        color: '#74283c',
+        example: `% Hello World in Prolog
+% The essence: Logic Goals
+write('Hello, World!'), nl.`,
+        executionSteps: ['Goal', 'Inference', 'Match', 'Output'],
+        history: [{ year: 1972, event: 'Born in Marseille' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Let logic decide.',
+        funEpisode: "Prolog = Programmation en Logique."
+    },
+    {
+        id: 'vhdl',
+        name: 'VHDL',
+        year: 1981,
+        creator: 'US DOD',
+        useCase: 'Chip Design',
+        description: 'Hardware description for digital logic comparison.',
+        tags: ['Hardware', 'FPGA', 'Logic'],
+        category: 'Systems',
+        color: '#adb2cb',
+        example: `-- Hello World in VHDL
+-- The essence: Signals and Processes
+entity Hello is end;
+architecture Behavior of Hello is begin
+  process begin report "Hello World"; wait; end process;
+end;`,
+        executionSteps: ['Source', 'Synthesis', 'Netlist', 'Hardware'],
+        history: [{ year: 1981, event: 'Request for Proposal' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Describing silicon.',
+        funEpisode: "Used to simulate space shuttle electronics!"
+    },
+    {
+        id: 'pascal',
+        name: 'Pascal',
+        year: 1970,
+        creator: 'Niklaus Wirth',
+        useCase: 'Education',
+        description: 'Clean, structured, and strictly typed development.',
+        tags: ['Clean', 'Safety', 'Formal'],
+        category: 'Systems',
+        color: '#27336e',
+        example: `(* Hello World in Pascal *)
+(* The essence: Structure *)
+program Hello;
+begin
+  WriteLn('Hello, World!');
+end.`,
+        executionSteps: ['Source', 'Compiler', 'Binary', 'Run'],
+        history: [{ year: 1970, event: 'Published' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Structured beauty.',
+        funEpisode: "Inspired Apple's early Mac OS code!"
+    },
+    {
+        id: 'vb',
+        name: 'Visual Basic',
+        year: 1991,
+        creator: 'Alan Cooper',
+        useCase: 'Windows Apps',
+        description: 'Revolutionized GUI development with drag-and-drop.',
+        tags: ['Easy', 'GUI', 'Windows'],
+        category: 'Software',
+        color: '#1572b6',
+        example: `' Hello World in VB
+' The essence: Event Driven
+Sub Main()
+    MsgBox "Hello, World!"
+End Sub`,
+        executionSteps: ['Code', 'Compiler', 'Runtime', 'Window'],
+        history: [{ year: 1991, event: 'Released' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'If-then-else GUI.',
+        funEpisode: "The 'Father of VB' is also the father of UX personas."
+    },
+    {
+        id: 'objective_c',
+        name: 'Objective-C',
+        year: 1984,
+        creator: 'Brad Cox',
+        useCase: 'Legacy iOS',
+        description: 'The language that powered the first iPhone.',
+        tags: ['Apple', 'Object', 'Legacy'],
+        category: 'Software',
+        color: '#438eff',
+        example: `// Hello World in Obj-C
+// The essence: Square Brackets
+NSLog(@"Hello, World!");`,
+        executionSteps: ['Source', 'Compiler', 'Binary', 'Run'],
+        history: [{ year: 1984, event: 'Created' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Dynamic messaging.',
+        funEpisode: "Steve Jobs licensed it for NeXT."
+    },
+    {
+        id: 'elixir',
+        name: 'Elixir',
+        year: 2011,
+        creator: 'José Valim',
+        useCase: 'Real-time Apps',
+        description: 'Concurrent and fault-tolerant on the Erlang VM.',
+        tags: ['BEAM', 'Web', 'Concurrent'],
+        category: 'Backend',
+        color: '#4e2a8e',
+        example: `# Hello World in Elixir
+# The essence: Pipe Operator
+IO.puts "Hello, World!"`,
+        executionSteps: ['Source', 'Compiler', 'BEAM Bytecode', 'VM'],
+        history: [{ year: 2011, event: 'Born' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Fault tolerance.',
+        funEpisode: "Discord handles 12M+ concurrent users with Elixir!"
+    },
+    {
+        id: 'smalltalk',
+        name: 'Smalltalk',
+        year: 1972,
+        creator: 'Alan Kay',
+        useCase: 'OO Research',
+        description: 'The purest approach to object-oriented programming.',
+        tags: ['OO', 'Iconic', 'Pure'],
+        category: 'Software',
+        color: '#596706',
+        example: `"Hello World in Smalltalk"
+Transcript show: 'Hello, World!'.`,
+        executionSteps: ['Image', 'VM', 'Message', 'Result'],
+        history: [{ year: 1972, event: 'XEROX PARC' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Everything is an object.',
+        funEpisode: "Invented overlapping windows!"
+    },
+    {
+        id: 'fortran',
+        name: 'Fortran',
+        year: 1957,
+        creator: 'John Backus',
+        useCase: 'Supercomputing',
+        description: 'The first high-level language. Still rules physics.',
+        tags: ['Math', 'Fast', 'Ancient'],
+        category: 'Data',
+        color: '#734f96',
+        example: `! Hello World in Fortran
+! The essence: Formula Translation
+program hello
+  print *, 'Hello, World!'
+end program hello`,
+        executionSteps: ['Source', 'Compiler', 'Binary', 'Run'],
+        history: [{ year: 1957, event: 'Released by IBM' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Number crunching king.',
+        funEpisode: "Name stands for FORmula TRANslation."
+    },
+    {
+        id: 'cobol',
+        name: 'COBOL',
+        year: 1959,
+        creator: 'Grace Hopper (Grandmother)',
+        useCase: 'Banking, Finance',
+        description: 'Business oriented language. Runs 95% of ATM swipes.',
+        tags: ['Business', 'Old', 'Stable'],
+        category: 'Enterprise',
+        color: '#005ca5',
+        example: `* Hello World in COBOL
+PROCEDURE DIVISION.
+DISPLAY 'Hello, World!'.
+STOP RUN.`,
+        executionSteps: ['Source', 'Compiler', 'Mainframe', 'Run'],
+        history: [{ year: 1959, event: 'Designed by CODASYL' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'I handle the money.',
+        funEpisode: "Y2K bug was mostly about COBOL dates!"
+    },
+    {
+        id: 'racket',
+        name: 'Racket',
+        year: 1995,
+        creator: 'PLT',
+        useCase: 'Education, Lisp',
+        description: 'A programmable programming language. Design your own syntax.',
+        tags: ['Lisp', 'Education', 'Macros'],
+        category: 'Functional',
+        color: '#3c52a1',
+        example: `;; Hello World in Racket
+#lang racket
+(displayln "Hello, World!")`,
+        executionSteps: ['Source', 'Macro Expand', 'Bytecode', 'Run'],
+        history: [{ year: 1995, event: 'Started as PLT Scheme' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Language for languages.',
+        funEpisode: "Excellent for creating new languages."
+    },
+    {
+        id: 'scheme',
+        name: 'Scheme',
+        year: 1975,
+        creator: 'Sussman & Steele',
+        useCase: 'Education, AI',
+        description: 'Minimalist Lisp. Clean, beautiful, and distinct.',
+        tags: ['Minimal', 'Lisp', 'Academic'],
+        category: 'Functional',
+        color: '#ff6600',
+        example: `;; Hello World in Scheme
+(display "Hello, World!")`,
+        executionSteps: ['Source', 'Interpreter', 'Value', 'Print'],
+        history: [{ year: 1975, event: 'MIT AI Lab' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Minimalist perfection.',
+        funEpisode: "Guy Steele created Java spec too!"
+    },
+    {
+        id: 'ocaml',
+        name: 'OCaml',
+        year: 1996,
+        creator: 'INRIA',
+        useCase: 'Financial, Systems',
+        description: 'Industrial strength functional programming.',
+        tags: ['ML', 'Functional', 'Fast'],
+        category: 'Functional',
+        color: '#ec6813',
+        example: `(* Hello World in OCaml *)
+print_endline "Hello, World!";;`,
+        executionSteps: ['Source', 'Bytecode/Native', 'Run', 'Output'],
+        history: [{ year: 1996, event: 'Objective Caml born' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Type safety + speed.',
+        funEpisode: "Used heavily by Jane Street for trading."
+    },
+    {
+        id: 'zig',
+        name: 'Zig',
+        year: 2016,
+        creator: 'Andrew Kelley',
+        useCase: 'Systems Replacement for C',
+        description: 'A modern C. No hidden control flow, no hidden allocations.',
+        tags: ['Systems', 'Modern', 'C-like'],
+        category: 'Systems',
+        color: '#ec915c',
+        example: `// Hello World in Zig
+const std = @import("std");
+pub fn main() !void {
+    std.debug.print("Hello, World!\\n", .{});
+}`,
+        executionSteps: ['Source', 'Zig Compiler', 'Binary', 'Run'],
+        history: [{ year: 2016, event: 'Development started' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Zero hidden logic.',
+        funEpisode: "Can compile C code better than GCC sometimes!"
+    },
+    {
+        id: 'nim',
+        name: 'Nim',
+        year: 2008,
+        creator: 'Andreas Rumpf',
+        useCase: 'Systems, Scripting',
+        description: 'Python-like syntax with C-like performance.',
+        tags: ['Fast', 'Pythonic', 'Systems'],
+        category: 'Systems',
+        color: '#ffc200',
+        example: `# Hello World in Nim
+echo "Hello, World!"`,
+        executionSteps: ['Source', 'Transpile C', 'Compile C', 'Run'],
+        history: [{ year: 2008, event: 'Created' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Efficient expressiveness.',
+        funEpisode: "Compiles to C, C++, or JavaScript!"
+    },
+    {
+        id: 'crystal',
+        name: 'Crystal',
+        year: 2014,
+        creator: 'Ary Borenszweig',
+        useCase: 'Web, Systems',
+        description: 'Ruby syntax but compiled and statically typed.',
+        tags: ['Fast', 'Ruby-like', 'Compiled'],
+        category: 'Backend',
+        color: '#000000',
+        example: `# Hello World in Crystal
+puts "Hello, World!"`,
+        executionSteps: ['Source', 'LLVM IR', 'Binary', 'Run'],
+        history: [{ year: 2014, event: 'Released' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Fast as C, Slick as Ruby.',
+        funEpisode: "Type inference is so good you rarely type types."
+    },
+    {
+        id: 'solidity',
+        name: 'Solidity',
+        year: 2014,
+        creator: 'Gavin Wood',
+        useCase: 'Smart Contracts',
+        description: 'The language of Ethereum and Web3.',
+        tags: ['Crypto', 'Contract', 'Blockchain'],
+        category: 'Software',
+        color: '#363636',
+        example: `// Hello World in Solidity
+contract Hello {
+    string public greet = "Hello, World!";
+}`,
+        executionSteps: ['Source', 'Bytecode', 'EVM', 'Blockchain'],
+        history: [{ year: 2014, event: 'Proposed for Ethereum' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Code is law.',
+        funEpisode: "A bug in Solidity code cost $50M (The DAO)."
+    },
+    {
+        id: 'powershell',
+        name: 'PowerShell',
+        year: 2006,
+        creator: 'Microsoft',
+        useCase: 'Windows Admin',
+        description: 'Object-oriented shell for Windows automation.',
+        tags: ['cli', 'Microsoft', 'Admin'],
+        category: 'Scripting',
+        color: '#012456',
+        example: `# Hello World in PowerShell
+Write-Host "Hello, World!"`,
+        executionSteps: ['Script', 'Parser', '.NET Runtime', 'Output'],
+        history: [{ year: 2006, event: 'Monad became PowerShell' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Objects in the shell.',
+        funEpisode: "Passes objects, not text, between commands."
+    },
+    {
+        id: 'matlab',
+        name: 'MATLAB',
+        year: 1984,
+        creator: 'Cleve Moler',
+        useCase: 'Engineering, Math',
+        description: 'Matrix laboratory. Essential for engineers and scientists.',
+        tags: ['Math', 'Matrix', 'Science'],
+        category: 'Data',
+        color: '#e16737',
+        example: `% Hello World in MATLAB
+disp('Hello, World!')`,
+        executionSteps: ['Script', 'Interpreter', 'JIT', 'Plot'],
+        history: [{ year: 1984, event: 'Founded MathWorks' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Everything is a matrix.',
+        funEpisode: "Originally written to give students access to LINPACK."
+    },
+    {
+        id: 'ada',
+        name: 'Ada',
+        year: 1980,
+        creator: 'Jean Ichbiah',
+        useCase: 'Aviation, Defense',
+        description: 'Designed for safety-critical systems. Planes run on Ada.',
+        tags: ['Safety', 'Military', 'Robust'],
+        category: 'Systems',
+        color: '#02f88c',
+        example: `-- Hello World in Ada
+with Ada.Text_IO; use Ada.Text_IO;
+procedure Hello is begin
+   Put_Line ("Hello, World!");
+end Hello;`,
+        executionSteps: ['Source', 'Compiler', 'Binary', 'Control'],
+        history: [{ year: 1980, event: 'MIL-STD-1815' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Failure is not an option.',
+        funEpisode: "Named after Ada Lovelace, the first programmer."
+    },
+    {
+        id: 'haxe',
+        name: 'Haxe',
+        year: 2005,
+        creator: 'Nicolas Cannasse',
+        useCase: 'Games, Cross-platform',
+        description: 'The universal language. Transpiles to almost anything.',
+        tags: ['Cross-platform', 'Game', 'Flexible'],
+        category: 'Software',
+        color: '#ea8220',
+        example: `// Hello World in Haxe
+class Main {
+  static function main() {
+    trace("Hello, World!");
+  }
+}`,
+        executionSteps: ['Source', 'Transpiler', 'Target Lang', 'Run'],
+        history: [{ year: 2005, event: 'Released' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'One code, everywhere.',
+        funEpisode: "Can compile to C++, Java, JS, Python, Lua..."
+    },
+    {
+        id: 'd_lang',
+        name: 'D',
+        year: 2001,
+        creator: 'Walter Bright',
+        useCase: 'Systems, Games',
+        description: 'C++ done right. Powerful but easier to use.',
+        tags: ['Systems', 'Fast', 'Clean'],
+        category: 'Systems',
+        color: '#b03931',
+        example: `// Hello World in D
+import std.stdio;
+void main() {
+    writeln("Hello, World!");
+}`,
+        executionSteps: ['Source', 'Compiler', 'Binary', 'Run'],
+        history: [{ year: 2001, event: 'Released' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Systems power, productivity.',
+        funEpisode: "Originally called 'Mars'."
+    },
+    {
+        id: 'clojure',
+        name: 'Clojure',
+        year: 2007,
+        creator: 'Rich Hickey',
+        useCase: 'Data, Backend',
+        description: 'Modern Lisp on the Java Virtual Machine.',
+        tags: ['Lisp', 'JVM', 'Functional'],
+        category: 'Functional',
+        color: '#5881d8',
+        example: `;; Hello World in Clojure
+(println "Hello, World!")`,
+        executionSteps: ['Source', 'Reader', 'JVM Bytecode', 'Run'],
+        history: [{ year: 2007, event: 'Released' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Simple made easy.',
+        funEpisode: "Emphasizes immutability for concurrency."
+    },
+    {
+        id: 'fsharp',
+        name: 'F#',
+        year: 2005,
+        creator: 'Don Syme',
+        useCase: 'Finance, Web',
+        description: 'Functional first language on .NET.',
+        tags: ['Functional', '.NET', 'Concise'],
+        category: 'Functional',
+        color: '#b845fc',
+        example: `// Hello World in F#
+printfn "Hello, World!"`,
+        executionSteps: ['Source', 'Compiler', 'IL', 'CLR'],
+        history: [{ year: 2005, event: 'Microsoft Research' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Functional .NET.',
+        funEpisode: "Derived from OCaml but for .NET."
+    },
+    {
+        id: 'julia',
+        name: 'Julia',
+        year: 2012,
+        creator: 'Bezanson et al',
+        useCase: 'Data Science',
+        description: 'Fast as C, Dynamic as Python. Scientific computing.',
+        tags: ['Science', 'Fast', 'Math'],
+        category: 'Data',
+        color: '#9558b2',
+        example: `# Hello World in Julia
+println("Hello, World!")`,
+        executionSteps: ['Source', 'JIT (LLVM)', 'Native', 'Run'],
+        history: [{ year: 2012, event: 'Launched' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Walks like Python, runs like C.',
+        funEpisode: "Designed to solve the 'two language problem'."
+    },
+    {
+        id: 'erlang',
+        name: 'Erlang',
+        year: 1986,
+        creator: 'Ericsson',
+        useCase: 'Telecoms',
+        description: 'Built for massive concurrency and 99.9999999% uptime.',
+        tags: ['Concurrent', 'Reliable', 'Old'],
+        category: 'Backend',
+        color: '#a90533',
+        example: `% Hello World in Erlang
+io:format("Hello, World!~n").`,
+        executionSteps: ['Source', 'Compiler', 'BEAM VM', 'Run'],
+        history: [{ year: 1986, event: 'Proprietary at Ericsson' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Let it crash.',
+        funEpisode: "Originally purely for telephone switches."
+    },
+    {
+        id: 'groovy',
+        name: 'Groovy',
+        year: 2003,
+        creator: 'James Strachan',
+        useCase: 'Scripting JVM',
+        description: 'A dynamic language for the Java Virtual Machine.',
+        tags: ['JVM', 'Scripting', 'Dynamic'],
+        category: 'Scripting',
+        color: '#4298b8',
+        example: `// Hello World in Groovy
+println "Hello, World!"`,
+        executionSteps: ['Source', 'Compiler', 'Bytecode', 'JVM'],
+        history: [{ year: 2003, event: 'Created' }],
+        mascot: 'assets/placeholder_mascot.png',
+        mascotQuote: 'Supercharged Java.',
+        funEpisode: "Jenkins pipelines are written in Groovy."
     }
 ];
