@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LanguaPedia | Explore Programming Languages</title>
+    <meta name="description" content="A premium guide to programming languages, their history, creators, and usage.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar">
+            <div class="nav-content">
+                <a href="/" class="logo" id="home-link">
+                    <i data-lucide="code-2"></i>
+                    <span>LanguaPedia</span>
+                </a>
+                <div class="nav-links">
+                    <a href="/" class="nav-link active">Languages</a>
+                    <a href="#about" class="nav-link">About</a>
+                </div>
+            </div>
+        </nav>
+
+        <main id="main-content">
+            <!-- Dynamic content will be injected here -->
+            <div id="loader" class="loader-container">
+                <div class="loader"></div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 LanguaPedia. Built for the curious developer.</p>
+        </footer>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
